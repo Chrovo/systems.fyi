@@ -23,6 +23,7 @@ function App() {
             className="outline-1 rounded-md p-2"
             placeholder="New Habit"
             onChange={(e) => setInput(e.target.value)}
+            onSubmit={(e) => e.preventDefault()}
             value={input}
           />
         </form>
