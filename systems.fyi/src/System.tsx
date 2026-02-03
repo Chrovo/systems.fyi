@@ -4,7 +4,10 @@ type SystemProps = {
   name: string
 }
 
-const days = Array.from({length: 52}, () => new Array(7).fill(0))
+const days = Array.from({length: 5}, () => new Array(7).fill(0))
+for (let i = 0; i < 3; i++) {
+  days[days.length - 1].pop()
+}
 
 const System = ({name}: SystemProps) => {
   return (
@@ -14,7 +17,7 @@ const System = ({name}: SystemProps) => {
         {days.map((col, colIndex) => (
           <div className="flex flex-col space-y-1" key={colIndex}>
             {col.map((_, i) => (
-              <Box key={i+7*colIndex} color="bg-green-400" /> 
+              <Box key={i+7*colIndex} /> 
             ))}
           </div>
         ))}
