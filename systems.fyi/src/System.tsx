@@ -4,9 +4,16 @@ type SystemProps = {
   name: string
 }
 
-const days = Array.from({length: 5}, () => new Array(7).fill(0))
-for (let i = 0; i < 3; i++) {
-  days[days.length - 1].pop()
+const day = new Date(2026, 0, 1)
+const today = new Date()
+const days = new Array();
+while (day < today) {
+  const week = new Array();
+  for (let i = 0; i < 7; i++) {
+    week.push(new Date(day));
+    day.setDate(day.getDate() + 1);
+  }
+  days.push(week);
 }
 
 const System = ({name}: SystemProps) => {
@@ -16,8 +23,8 @@ const System = ({name}: SystemProps) => {
       <div className="flex space-x-1">
         {days.map((col, colIndex) => (
           <div className="flex flex-col space-y-1" key={colIndex}>
-            {col.map((_, i) => (
-              <Box key={i+7*colIndex} /> 
+            {col.map((d: Date, i: number) => (
+              <Box key={i+7*colIndex} date={d}/> 
             ))}
           </div>
         ))}
