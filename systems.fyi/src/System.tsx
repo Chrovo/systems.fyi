@@ -10,6 +10,7 @@ const days = new Array();
 while (day < today) {
   const week = new Array();
   for (let i = 0; i < 7; i++) {
+    if (day > today) break;
     week.push(new Date(day));
     day.setDate(day.getDate() + 1);
   }
