@@ -25,7 +25,7 @@ const System = ({name}: SystemProps) => {
         {days.map((col, colIndex) => (
           <div className="flex flex-col space-y-1" key={colIndex}>
             {col.map((d: Date, i: number) => (
-              <Box key={i+7*colIndex} date={d}/> 
+              <Box system={name} key={i+7*colIndex} date={d}/> 
             ))}
           </div>
         ))}
