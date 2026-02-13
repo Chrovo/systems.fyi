@@ -4,12 +4,11 @@ import System from './System'
 
 function App() {
   const [input, setInput] = useState('')
-  const [systems, setSystems] = useState<string[]>([])
 
   const addSystem = () => {
     if (!input.trim()) return
 
-    setSystems(prev => [...prev, input])
+    localStorage.setItem(input, JSON.stringify([]))
     setInput('')
   }
 
@@ -27,13 +26,16 @@ function App() {
             value={input}
           />
         </form>
-        <button className="outline-1 rounded-md p-2" onClick={addSystem}>
+        <button className="outline-1 rounded-md p-2" onClick={() => {
+          addSystem()
+          localStorage[input] = JSON.stringify([])
+        }}>
           add habit
         </button>
       </div>
       <div>
-        {systems.map((name, index) => (
-          <System key={index} name={name} />
+        {Object.keys(localStorage).map((system, index) => (
+          <System name={system} key={index}/>
         ))}
       </div>
     </>
