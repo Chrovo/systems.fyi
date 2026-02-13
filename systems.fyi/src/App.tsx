@@ -26,10 +26,7 @@ function App() {
             value={input}
           />
         </form>
-        <button className="outline-1 rounded-md p-2" onClick={() => {
-          addSystem()
-          localStorage[input] = JSON.stringify([])
-        }}>
+        <button className="outline-1 rounded-md p-2" onClick={addSystem}>
           add habit
         </button>
       </div>
